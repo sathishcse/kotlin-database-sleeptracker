@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sleep"
+            type="com.example.android.trackmysleepquality.database.SleepNight" />
+
+        <variable
+            name="sleepTrackerClickListener"
+            type="com.example.android.trackmysleepquality.sleeptracker.SleepTrackerAdapter.SleepTrackClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->sleepTrackerClickListener.onClick(sleep)}"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_sleep_quality"
+            android:layout_width="64dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_sleep_0"
+            android:text="sleep Quality"
+            app:layout_constraintStart_toStartOf="parent"
+            app:sleepQualityImage="@{sleep}"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="sleep day"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_sleep_quality"
+            app:sleepTime="@{sleep}"
+            tools:ignore="MissingConstraints"
+            tools:text="Monday" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="sleep data"
+            app:layout_constraintEnd_toEndOf="@+id/iv_sleep_quality"
+            app:layout_constraintStart_toStartOf="@+id/iv_sleep_quality"
+            app:layout_constraintTop_toBottomOf="@+id/iv_sleep_quality"
+            app:sleepQuality="@{sleep}"
+            tools:ignore="MissingConstraints"
+            tools:text="Sleep quality" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
